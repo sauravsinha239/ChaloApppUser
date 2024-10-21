@@ -94,8 +94,8 @@ static Future <DirectionDetailsInfo> obtainOriginToDestinationDirectionDetails(L
 
 }
 static double calculateFareAmount(DirectionDetailsInfo directionDetailsInfo){
-  //double timeTravelledFareAmountPerMinute = (directionDetailsInfo.durationValue! / 60) * 3.0; //  3 INR per minute
-  double distanceTravelledFareAmountPerKilometer = (directionDetailsInfo.distanceValue! / 1000) * 10.0; //  15 INR per km
+  double timeTravelledFareAmountPerMinute = (directionDetailsInfo.durationValue! / 60) * 2.0; //  2INR per minute
+  double distanceTravelledFareAmountPerKilometer = (directionDetailsInfo.distanceValue! / 1000) * 10.0; //  10 INR per km
 
   double totalFareAmount =  distanceTravelledFareAmountPerKilometer;//timeTravelledFareAmountPerMinute +
   return double.parse(totalFareAmount.toStringAsFixed(1));

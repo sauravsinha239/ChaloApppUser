@@ -1,11 +1,10 @@
 
 
-import 'package:cab/splash_screen/splash.dart';
 import 'package:flutter/material.dart';
 
 class PayFareAmountDialog extends StatefulWidget{
 double ? fareamount;
-PayFareAmountDialog({ this.fareamount});
+PayFareAmountDialog({super.key,  this.fareamount});
 
 
   @override

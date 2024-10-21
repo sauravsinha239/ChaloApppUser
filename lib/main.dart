@@ -2,10 +2,8 @@ import 'dart:async';
 
 import 'package:cab/Theme_provider/theme_provider.dart';
 import 'package:cab/infoHandler/app_info.dart';
-import 'package:cab/screen/rateDriverScreen.dart';
 
 import 'package:cab/splash_screen/splash.dart';
-import 'package:cab/widgets/payFareAmountDialog.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: MyThemes.lightTheme,
         darkTheme: MyThemes.darkTheme,
         debugShowCheckedModeBanner: false,
-        home:   Splash(
+        home:   const Splash(
         ),
       ),
     );

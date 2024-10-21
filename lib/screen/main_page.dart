@@ -13,12 +13,9 @@ import 'package:cab/screen/pickup_location.dart';
 import 'package:cab/screen/search_place_screen.dart';
 import 'package:cab/widgets/Progress_dialog.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_geofire/flutter_geofire.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -27,8 +24,8 @@ import 'package:location/location.dart' as loc;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import '../Assistants/assistant.dart';
+import '../Assistants/blackThemeGoogleMaps.dart';
 import '../Assistants/serverToken.dart';
 import 'drawer_screen.dart';
 
@@ -108,7 +105,6 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
     Geofire.initialize("activeDrivers");
     Geofire.queryAtLocation(userCurrentPosition!.latitude, userCurrentPosition!.longitude, 10)!
     .listen((map){
-      print(map);
       if(map!= null){
         var callBack = map["callBack"];
         switch(callBack){
@@ -477,7 +473,7 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
       LatLng userPickUpPosition =LatLng(userCurrentPosition!.latitude, userCurrentPosition!.longitude);
       var directionDetailsInfo= await Assistants.obtainOriginToDestinationDirectionDetails(driverCurrentPositionLatLng,userPickUpPosition);
       setState(() {
-        driverRideStatus = "Driver is Coming: ${directionDetailsInfo.distanceText.toString()}";
+        driverRideStatus = "Driver is Coming: ${directionDetailsInfo.durationText.toString()}";
       });
       requestPositionInfo= true;
     }
@@ -629,6 +625,13 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
               onMapCreated: (GoogleMapController controller) {
                 _controllerGoogleMap.complete(controller);
                 newGoogleMapController = controller;
+
+                  if(darkTheme==true) {
+                    setState(() {
+                      blackThemeGoogleMap(newGoogleMapController);
+                    });
+                  }
+
                 setState(() {
                   bottomPaddingOfMap = 250;
                 });
@@ -1156,16 +1159,18 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
                         GestureDetector(
                           onTap: (){
                             referenceRideRequest!.remove();
+
                             setState(() {
-                              searchLocationContainerHeight=0;
                               suggestedRidesContainerHeight=0;
+                              searchLocationContainerHeight=0;
+                              searchingForDriverContainerHeight=0;
                             });
+
 
                           },
                           child: Container(
                             height: 50,
                               width: 50,
-
                               decoration: BoxDecoration(
                                 color: darkTheme ? Colors.black : Colors.white,
                                 borderRadius: BorderRadius.circular(25),
@@ -1203,23 +1208,23 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [
                         Text(
                           driverRideStatus,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
 
                         ),
-                        SizedBox(height: 5,),
+                        const SizedBox(height: 5,),
 
                         Divider(
                           thickness: 1,
                           color: darkTheme? Colors.grey:Colors.grey[300],
                         ),
-                        SizedBox(height: 5,),
+                        const SizedBox(height: 5,),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1227,14 +1232,14 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
                             Row(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                     color: darkTheme ? Colors.yellow : Colors.blue,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Icon(Icons.person, color: darkTheme? Colors.black:Colors.white,),
                                 ),
-                                SizedBox(width: 10,),
+                                const SizedBox(width: 10,),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -1244,7 +1249,7 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
                                       children: [
                                         Icon(Icons.star, color: darkTheme ? Colors.green: Colors.orange,),
                                         Text(double.tryParse(driverRatings)?.toStringAsFixed(2) ?? "0.0",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.grey
                                           ),
                                         ),
@@ -1261,24 +1266,24 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
                               children: [
                                Image.asset("images/car.png",width: 70,height: 70,),
 
-                                Text(driverVehicleDetails,style: TextStyle(fontSize:12),),
+                                Text(driverVehicleDetails,style: const TextStyle(fontSize:12),),
                               ],
                             )
                           ],
                         ),
 
-                        SizedBox(height: 5,),
+                        const SizedBox(height: 5,),
                         Divider(thickness: 1, color: darkTheme? Colors.grey: Colors.grey[300],),
                         ElevatedButton.icon(
                             onPressed: (){
-                              _makePhoneCall("tel: ${driverPhone}");
-                              print("Call action performed ${driverPhone}");
+                              _makePhoneCall("tel: $driverPhone");
+                              print("Call action performed $driverPhone");
                             },
                           style: ElevatedButton.styleFrom(
                            backgroundColor: darkTheme ? Colors.blue[100]: Colors.blue,
                           ),
-                            icon: Icon(Icons.phone),
-                            label: Text("Call Driver"),
+                            icon: const Icon(Icons.phone),
+                            label: const Text("Call Driver"),
                         ),
                       ],
                     ),

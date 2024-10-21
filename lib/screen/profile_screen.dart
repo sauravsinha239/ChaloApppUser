@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../global/global.dart';
 
@@ -179,7 +180,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-
+    backgroundColor: darkTheme ? Colors.black: Colors.white,
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -195,7 +196,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.purple,
                 fontWeight:
                 FontWeight.bold,
-                fontSize: 28),
+                fontSize: 28
+            ),
           ),centerTitle: true,
 
           elevation: 0.0,
@@ -217,7 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(userModelCurrentInfo!.name!,
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: darkTheme ? Colors.red : Colors.green,
@@ -242,7 +244,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(userModelCurrentInfo!.phone!,
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: darkTheme ? Colors.red : Colors.green,
@@ -266,7 +268,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(userModelCurrentInfo!.address!,
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: darkTheme ? Colors.red : Colors.green,
@@ -287,7 +289,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   thickness: 1,
                 ),
                 Text(userModelCurrentInfo!.email!,
-                  style: const TextStyle(
+                  style:  GoogleFonts.lato(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color:  Colors.purple ,

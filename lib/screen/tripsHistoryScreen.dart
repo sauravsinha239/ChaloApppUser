@@ -1,7 +1,6 @@
 import 'package:cab/infoHandler/app_info.dart';
 import 'package:cab/widgets/historyDesignUi.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 class TripsHistoryScreen extends StatefulWidget{
@@ -24,7 +23,7 @@ class _TripsHistoryScreenState extends State<TripsHistoryScreen> {
             style: TextStyle(color: darkTheme? Colors.deepOrange: Colors.purple[900], fontWeight: FontWeight.bold, fontSize: 24),
       ),
       leading: IconButton(
-        icon: Icon(Icons.close, color: Colors.red,size: 34,),
+        icon: const Icon(Icons.close, color: Colors.red,size: 34,),
         onPressed: (){
           Navigator.pop(context);
         },
@@ -33,7 +32,7 @@ class _TripsHistoryScreenState extends State<TripsHistoryScreen> {
       elevation: 0,
     ),
     body: Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
 
       child: ListView.separated(
           itemBuilder: (context, i) {
