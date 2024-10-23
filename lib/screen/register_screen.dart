@@ -5,6 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'forget.dart';
 class register_screen extends StatefulWidget {
@@ -75,7 +76,7 @@ class _register_screenState extends State<register_screen> {
             Text(
               'Register',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 color: darktheme ? Colors.amber.shade400:Colors.red,
                 fontSize: 30,
                 fontWeight: FontWeight.w600,
@@ -100,7 +101,7 @@ class _register_screenState extends State<register_screen> {
                           ],
                             decoration: InputDecoration(
                               hintText: "Name",
-                              hintStyle: const TextStyle(
+                              hintStyle: GoogleFonts.lato(
                                 color: Colors.grey,
                               ),
                               filled: true,
@@ -140,7 +141,7 @@ class _register_screenState extends State<register_screen> {
                           decoration: InputDecoration(
                               hintText: "Email",
 
-                              hintStyle: const TextStyle(
+                              hintStyle: GoogleFonts.lato(
                                 color: Colors.grey,
 
                               ),
@@ -186,7 +187,7 @@ class _register_screenState extends State<register_screen> {
                            ),
                            decoration: InputDecoration(
                              hintText: "Phone Number",
-                             hintStyle: const TextStyle(
+                             hintStyle: GoogleFonts.lato(
                                color: Colors.grey,
                              ),
                              filled: true,
@@ -213,7 +214,7 @@ class _register_screenState extends State<register_screen> {
                           decoration: InputDecoration(
                               hintText: "Enter your address",
 
-                              hintStyle: const TextStyle(
+                              hintStyle: GoogleFonts.lato(
                                 color: Colors.grey,
 
                               ),
@@ -257,7 +258,7 @@ class _register_screenState extends State<register_screen> {
                           decoration: InputDecoration(
                             hintText: "Enter Password",
 
-                            hintStyle: const TextStyle(
+                            hintStyle: GoogleFonts.lato(
                               color: Colors.grey,
                             ),
                             filled: true,
@@ -311,7 +312,7 @@ class _register_screenState extends State<register_screen> {
                           decoration: InputDecoration(
                             hintText: "Confirm Password",
 
-                            hintStyle: const TextStyle(
+                            hintStyle: GoogleFonts.lato(
                               color: Colors.grey,
                             ),
                             filled: true,
@@ -370,9 +371,9 @@ class _register_screenState extends State<register_screen> {
                           ),
                             onPressed: (){
                             _Submit();
-                            }, child: const Text(
+                            }, child: Text(
                           'Register',
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.purple,
@@ -387,7 +388,7 @@ class _register_screenState extends State<register_screen> {
                           },
                           child: Text(
                             'Forget Password',
-                            style: TextStyle(
+                            style: GoogleFonts.lato(
                               color: darktheme ? Colors.yellowAccent : Colors.red,
                               fontSize: 20,
                             ),
@@ -398,8 +399,8 @@ class _register_screenState extends State<register_screen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text("Have an account?",
-                            style: TextStyle(
+                             Text("Have an account?",
+                            style: GoogleFonts.lato(
                               color: Colors.grey,
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -411,7 +412,7 @@ class _register_screenState extends State<register_screen> {
                               },
                               child: Text(
                                 "Sign in",
-                                style: TextStyle(
+                                style: GoogleFonts.lato(
                                   fontSize: 15,
                                   color: darktheme ? Colors.grey :Colors.grey,
                                 ),

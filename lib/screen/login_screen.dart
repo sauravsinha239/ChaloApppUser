@@ -5,7 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../global/global.dart';
 import '../model/user_model.dart';
 import '../splash_screen/splash.dart';
@@ -41,7 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
           if(snap.value!=null){
             currentUser =auth.user;
             await Fluttertoast.showToast(msg: "Successfully Logged In");
-            Navigator.push(context, MaterialPageRoute(builder: (c)=>const MainPage()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=>const MainPage()));
+
             //for current  user info drawer patch
             DatabaseReference userRef = FirebaseDatabase.instance
                 .ref()
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
           else{
             await Fluttertoast.showToast(msg: "No user exits with this email");
             firebaseAuth.signOut();
-            Navigator.push(context, MaterialPageRoute(builder: (c)=>const Splash()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=>const Splash()));
           }
         });
       }).catchError((errorMessage) {
@@ -84,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Text(
               'Login Now',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 40,
                 color: darkTheme ? Colors.yellowAccent : Colors.red,
                 fontWeight: FontWeight.bold,
@@ -107,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                           decoration: InputDecoration(
                               hintText: "Enter your email",
-                              hintStyle: const TextStyle(
+                              hintStyle: GoogleFonts.lato(
                                 color: Colors.grey,
                               ),
                               filled: true,
@@ -153,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                           decoration: InputDecoration(
                             hintText: "Enter Password",
-                            hintStyle: const TextStyle(
+                            hintStyle: GoogleFonts.lato(
                               color: Colors.grey,
                             ),
                             filled: true,
@@ -214,9 +215,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             _Submit();
                           },
-                          child: const Text(
+                          child:  Text(
                             'Sign in',
-                            style: TextStyle(
+                            style: GoogleFonts.lato(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
                               color: Colors.purple,
@@ -235,7 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(
                             'Forget Password',
-                            style: TextStyle(
+                            style: GoogleFonts.lato(
                               color:
                                   darkTheme ? Colors.yellowAccent : Colors.red,
                               fontSize: 16,

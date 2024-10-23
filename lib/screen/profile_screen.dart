@@ -190,9 +190,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
             icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.red,size: 22,),
           ),
-          title: const Text(
+          title:  Text(
             "Profile",
-            style: TextStyle(
+            style: GoogleFonts.lato(
                 color: Colors.purple,
                 fontWeight:
                 FontWeight.bold,

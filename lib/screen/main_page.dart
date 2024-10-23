@@ -473,7 +473,7 @@ List<ActiveNearByAvailableDriver>onlineNearByAvailableDriverList = [];
       LatLng userPickUpPosition =LatLng(userCurrentPosition!.latitude, userCurrentPosition!.longitude);
       var directionDetailsInfo= await Assistants.obtainOriginToDestinationDirectionDetails(driverCurrentPositionLatLng,userPickUpPosition);
       setState(() {
-        driverRideStatus = "Driver is Coming: ${directionDetailsInfo.durationText.toString()}";
+        driverRideStatus = "Driver is Coming: ${"${directionDetailsInfo.durationText}\n ${directionDetailsInfo.distanceText}"}";
       });
       requestPositionInfo= true;
     }
